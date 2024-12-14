@@ -1,13 +1,19 @@
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local screenGui = playerGui:FindFirstChild("GraceScriptGui") or Instance.new("ScreenGui", playerGui)
+screenGui.Name = "GraceScriptGui"
+
 local button = Instance.new("TextButton")
 button.Size = UDim2.new(0, 200, 0, 50)
 button.Position = UDim2.new(0.5, -100, 0.5, -25)
 button.Text = "Essential For The Script (Click)"
 button.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-button.Parent = game.Players.LocalPlayer.PlayerGui.ScreenGui
+button.Parent = screenGui
 
 button.MouseButton1Click:Connect(function()
     button.Position = UDim2.new(0.5, 10000, 0.5, -25)
-    loadstring(game:HttpGet(('https://starfallx.vercel.app/roblox/obfuscated_gracedozer.lua')))()
+    loadstring(game:HttpGet('https://starfallx.vercel.app/roblox/obfuscated_gracedozer.lua'))()
 end)
 
 game.StarterGui:SetCore("SendNotification", {
@@ -70,11 +76,9 @@ RS.QuickNotes.FakeDoor:Destroy()
 RS.QuickNotes.SleepyHead:Destroy()
 
 while true do
-    local players = game:GetService("Players")
-    local plr = players.LocalPlayer
-    local SmileGui = plr:FindFirstChild("PlayerGui"):FindFirstChild("smilegui")
+    local SmileGui = player:FindFirstChild("PlayerGui"):FindFirstChild("smilegui")
     if SmileGui then
-        SmileGui:Destroy() 
+        SmileGui:Destroy()
     end
     task.wait(0.1)
 end
